@@ -1,0 +1,68 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mongodbreader",
+                    "parameter": {
+                        "address": ["127.0.0.1:27017"],
+                        "collectionName": "t_order",
+                        "column": [
+                            {
+                                "name":"_id",
+                                "type":"string"
+                            },
+                            {
+                                "name":"body",
+                                "type":"string"
+                            },
+                            {
+                                "name":"head",
+                                "type":"string"
+                            },
+                            {
+                                "name":"request",
+                                "type":"string"
+                            },
+                            {
+                                "name":"response",
+                                "type":"string"
+                            },
+                            {
+                                "name":"orderList",
+                                "type":"Array",
+                                "spliter":","
+                            },
+                            {
+                                "name":"name",
+                                "type":"string",
+                                "spliter":","
+                            },
+                            {
+                                "name":"color",
+                                "type":"string",
+                                "spliter":","
+                            }
+                        ],
+                        "dbName": "mytest"
+                    }
+                },
+                "writer": {
+                    "name": "txtfilewriter",
+                    "parameter": {
+                        "path": "D:\\temp\\dataxtest",
+                        "fileName": "test",
+                        "writeMode": "truncate",
+                        "dateFormat": "yyyy-MM-dd"
+                    }
+                }
+
+            }
+        ],
+        "setting": {
+            "speed": {
+                "channel": "1"
+            }
+        }
+    }
+}

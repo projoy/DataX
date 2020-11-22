@@ -197,10 +197,33 @@ public class Engine {
 
         return -1;
     }
-
+    /**
+     * 本机调试
+     * ---------------------------方法1：idea设置-----------------------------------
+     * vm option
+     * -Ddatax.home=D:\workspace\DataX\target\datax\datax
+     * program args
+     * -mode standalone -jobid -1 -job D:\workspace\DataX\mongodbreader\src\test\resources\test02.json
+     *
+     * -------------------------方法2：main设置-----------------------
+     * //设置运行的datax的目录
+     *  System.setProperty("datax.home", "D:\\workspace\\DataX\\target\\datax\\datax");
+     * //设置datax的运行脚本信息
+     *  String jsonFile = "D:\\workspace\\DataX\\mongodbreader\\src\\test\\resources\\test02.json";
+     *  args = new String[]{"-mode", "standalone", "-jobid", "-1", "-job", jsonFile};
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         int exitCode = 0;
         try {
+//            //设置运行的datax的目录
+//            System.setProperty("datax.home", "D:\\workspace\\DataX\\target\\datax\\datax");
+//            //设置datax的运行脚本信息
+//            String jsonFile = "D:\\workspace\\DataX\\mongodbreader\\src\\test\\resources\\test02.json";
+//            args = new String[]{"-mode", "standalone", "-jobid", "-1", "-job", jsonFile};
+
             Engine.entry(args);
         } catch (Throwable e) {
             exitCode = 1;

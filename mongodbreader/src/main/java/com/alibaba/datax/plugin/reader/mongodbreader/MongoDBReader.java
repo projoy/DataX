@@ -174,7 +174,19 @@ public class MongoDBReader extends Reader {
                                 record.addColumn(new StringColumn(tempArrayStr));
                             }
                         } else {
-                            record.addColumn(new StringColumn(tempCol.toString()));
+                            //数据去除[Document{{name=apple_0, category=fruit, type=2}}, Document{{name=apple_1, category=fruit, type=2}}]
+//                            record.addColumn(new StringColumn(tempCol.toString()));
+                            if(tempCol instanceof  java.lang.String) {
+                                record.addColumn(new StringColumn(tempCol.toString()));
+//                            }else if(tempCol instanceof java.util.ArrayList){
+//                                record.addColumn(new StringColumn(JSONObject.toJSONString(tempCol)));
+//                            }else if(tempCol instanceof org.bson.Document){
+////                                record.addColumn(new StringColumn(((Document) tempCol).toJson()));
+//                                record.addColumn(new StringColumn(JSONObject.toJSONString(tempCol)));
+                            }else {
+                                record.addColumn(new StringColumn(JSONObject.toJSONString(tempCol)));
+
+                            }
                         }
                     }
                 }
