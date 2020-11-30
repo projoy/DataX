@@ -1,0 +1,72 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 2
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "mongodbreader",
+                    "parameter": {
+                        "address": ["127.0.0.1:27017"],
+                        "dbName": "mytest",
+                        "collectionName": "t_order",
+                        "query": "{\"createTime\": {\"$gte\": ISODate(\"2020-11-25\"), \"$lte\": ISODate(\"2020-11-26\")}}",
+                        "column": [
+                            {
+                                "name":"_id",
+                                "type":"string"
+                            },
+                            {
+                                "name":"orderId",
+                                "type":"string"
+                            },
+                            {
+                                "name":"sku",
+                                "type":"string"
+                            },
+                            {
+                                "name":"price",
+                                "type":"Double"
+                            },
+                            {
+                                "name":"qty",
+                                "type":"int"
+                            },
+                            {
+                                "name":"createTime",
+                                "type":"Date"
+                            },
+                            {
+                                "name":"updateTime",
+                                "type":"Date"
+                            },
+                            {
+                                "name":"color",
+                                "type":"string",
+                                "spliter":","
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "txtfilewriter",
+                    "parameter": {
+                        "path": "D:\\temp\\dataxtest",
+                        "fileName": "test",
+                        "writeMode": "append",
+                        "dateFormat": "yyyy-MM-dd"
+                    }
+                }
+
+            }
+        ],
+        "setting": {
+            "speed": {
+                "channel": "1"
+            }
+        }
+    }
+}

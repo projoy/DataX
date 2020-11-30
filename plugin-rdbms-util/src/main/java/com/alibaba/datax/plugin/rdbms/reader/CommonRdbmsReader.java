@@ -259,6 +259,9 @@ public class CommonRdbmsReader {
                             rawData = new String((rs.getBytes(i) == null ? EMPTY_CHAR_ARRAY : 
                                 rs.getBytes(i)), mandatoryEncoding);
                         }
+
+                        //将null转为"" CY
+                        rawData = rawData == null ? "" : rawData;
                         record.addColumn(new StringColumn(rawData));
                         break;
 
